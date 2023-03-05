@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
 from pathlib import Path
+import django_heroku
+import dj_database_url
 import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -27,7 +29,10 @@ SECRET_KEY = 'django-insecure-hy0w3^5#1q8d0kkzl%_a9$^1$3f0p*@(qw8)nulb5bmc7xgs_y
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    'harryd-to-do.herokuapp.com', 
+    # 'harryd-to-do.herokuapp.com', 
+    '127.0.0.1',
+    '.vercel.app',
+    'now.sh'
 ]
 
 
@@ -124,7 +129,9 @@ LOGIN_URL = 'base_login'
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 STATIC_URL = 'static/'
-STATIC_ROOT = os.path.join(BASE_DIR,'static')
+STATICFILES_DIRS = os.path.join(BASE_DIR,'static'),
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build', 'static')
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
